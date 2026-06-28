@@ -1,0 +1,59 @@
+# Commands Used in the Project
+
+## 1. Install R
+
+sudo apt update
+sudo apt install r-base -y
+
+## 2. Start R
+
+R
+
+## 3. Install BiocManager
+
+install.packages("BiocManager")
+
+## 4. Install maftools
+
+BiocManager::install("maftools")
+
+## 5. Load maftools
+
+library(maftools)
+
+## 6. Read MAF files
+
+luad <- read.maf("LUAD.maf")
+coad <- read.maf("COAD.maf")
+
+## 7. Generate Mutation Summary
+
+plotmafSummary(maf = luad)
+plotmafSummary(maf = coad)
+
+## 8. Generate Oncoplots
+
+oncoplot(maf = luad, top = 20)
+oncoplot(maf = coad, top = 20)
+
+## 9. Compare LUAD and COAD
+
+mafCompare(
+  m1 = luad,
+  m2 = coad,
+  m1Name = "LUAD",
+  m2Name = "COAD"
+)
+
+## 10. Generate Gene Summary
+
+getGeneSummary(luad)
+getGeneSummary(coad)
+
+## 11. Run SigProfilerExtractor
+
+python sigprofiler_extractor.py
+
+## 12. View Results
+
+explorer.exe SBS96_Decomposition_Plots.pdf
